@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.L Bean Documentation</title>    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <nav class="bg-[#0c5641] py-2 px-5 top-0 nav-container flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="visuals/logo-main-2.webp" alt="Logo" class="w-16 mr-4 h-15 white-stroke">
+            <!-- Dropdown with Search -->
+            <div class="relative inline-block text-left">
+                <input type="text" id="searchInput" placeholder="Search template..."
+                  class="w-full px-3 py-2 border rounded-full focus:outline-none focus:ring" 
+                  onfocus="showDropdown()" onkeyup="filterDropdown()">
+                
+                <div id="dropdownMenu" class="absolute hidden w-48 mt-1 bg-white rounded-md shadow-md">
+                  <ul class="py-1" id="dropdownList">
+                    <li><a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">About</a></li>
+                    <li><a href="#base" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Base</a></li>
+                    <li><a href="#blog" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Blog</a></li>
+                    <li><a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Contact</a></li>
+                    <li><a href="#custom" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Custom</a></li>
+                    <li><a href="#support" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Support</a></li>
+                    <li><a href="#tools" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Tools</a></li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+        <!-- Right Side Options -->
+        <div class="flex items-center space-x-4">
+            
+
+            <button id="generate-btn" class="button text-[var(--light-beige)]">Generate WN</button>
+            <a href="#" class="button text-[var(--light-beige)]">Short Keys</a>
+            <button onclick="addStep()" class="text-[var(--light-beige)] button">Add row</button>
+            <button onclick="clearData()" class="trash-button text-[var(--light-beige)] bg-[#bd5b00] mx-2 transition-all duration-200 ease-in-out rounded-full p-2" data-tab="tab3">
+                <svg class="w-6 h-6 trash-icon" stroke="currentColor" viewBox="0 0 24 24" fill="none">
+                    <!-- Trash Can Lid -->
+                    <path class="trash-lid" d="M9 5l1-1h4l1 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <!-- Trash Can Body -->
+                    <path d="M6 7l1 12a2 2 0 002 2h6a2 2 0 002-2l1-12M4 7h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <!-- Vertical Lines (Inside the Can) -->
+                    <path d="M10 11v6M14 11v6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            
+            
+        </div> 
+    </nav>
+
+    <section class="mt-[4.5rem] px-4">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 min-h-[85vh]"> 
+    
+            <!-- Instructions (Full Height) -->
+            <div id="instructions" class="row-span-5 bg-[#b8a89a] rounded-xl text-[10px] p-2 text-gray-600 italic">
+                Awaiting user to select template...
+            </div>
+    
+            <div class="relative flex flex-col col-span-2 row-span-5 p-5 overflow-auto bg-white rounded-xl">
+                <h2 class="text-[20px] font-semibold mb-5 text-[#0c5641]">Work Notes (Actions taken):</h2>
+                <!-- Small Pop-up Message -->
+                <div id="generated-message" class="absolute z-10 hidden max-w-xs px-4 py-2 text-center text-white transform -translate-x-1/2 -translate-y-1/2 bg-green-500 rounded-lg shadow-lg top-1/2 left-1/2">
+                    Generated and copied!
+                </div>
+                <div id="steps-container">
+                    <!-- Textareas (for steps) -->
+                    <textarea id="step-1" placeholder="1..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                    <textarea id="step-2" placeholder="2..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                    <textarea id="step-3" placeholder="3..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                    <textarea id="step-4" placeholder="4..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                    <textarea id="step-5" placeholder="5..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                    <textarea id="step-6" placeholder="6..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                    <textarea id="step-7" placeholder="7..." class="input textarea-step min-h-[40px] resize-y"></textarea>
+                </div>
+            </div>
+
+            
+            
+    
+            <!-- Notepad (Dynamic Height) -->
+            
+            
+            <textarea id="notepad" placeholder="Notepad... (drag bottom right corner to extend)" 
+                class="bg-[#8CB2B6] placeholder-gray-500 text-[14px] col-span-2 row-span-2 md:col-span-2 md:row-span-2 col-start-4 md:col-start-4 
+                rounded-xl p-3 min-h-[100px] resize-y"></textarea>
+    
+            <!-- Additional Section -->
+            <textarea id="note-gened" placeholder="Work Notes will be generated here..." class="bg-white col-span-2 text-[12px] row-span-3 md:col-span-2 md:row-span-3 col-start-4 md:col-start-4 rounded-xl p-3 min-h-[150px]"></textarea>
+    
+        </div>
+    </section>
+    
+    
+    
+
+
+    <script src="scripts.js"></script>
+    <script src="indexdb.js"></script>
+    <script src="searchbar.js"></script>
+    <script src="textarea-behavior.js"></script>
+    <script src="ribbon.js"></script>
+</body>
+</html>

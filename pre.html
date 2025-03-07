@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.L Bean Documentation</title>    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Akkurat&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="show-error hidden" id="error-message"></div>
+    <section class="nav-container">
+        <div class="button-navbar">
+
+            <button id="generate-btn" class="notepad-btn text-[var(--light-beige)] hover:text-[var(--accent-orange)] mx-2 transition-transform duration-200 ease-in-out hover:scale-110 rounded-3xl" data-tab="tab1">
+                <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6">
+                    <path d="M4 3h16a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1zm3 4h10M7 10h10M7 14h7M7 18h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            <button class="trash-button text-[var(--light-beige)] hover:text-[var(--accent-orange)] mx-2 transition-all duration-200 ease-in-out rounded-full p-2" data-tab="tab3">
+                <svg class="trash-icon h-6 w-6" stroke="currentColor" viewBox="0 0 24 24" fill="none">
+                    <!-- Trash Can Lid -->
+                    <path class="trash-lid" d="M9 5l1-1h4l1 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <!-- Trash Can Body -->
+                    <path d="M6 7l1 12a2 2 0 002 2h6a2 2 0 002-2l1-12M4 7h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <!-- Vertical Lines (Inside the Can) -->
+                    <path d="M10 11v6M14 11v6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </button>
+            <!-- Three Dots Button -->
+            <div class="relative flex items-center">
+                <button id="three-dots" class="text-[var(--light-beige)] hover:text-[var(--accent-orange)] mx-2 transition-all duration-200 ease-in-out focus:rotate-180 rounded-full">
+                    <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6">
+                        <path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg>
+                </button>
+
+                <!-- Hidden Menu -->
+                <div id="menu" class="top-1/2 transform -translate-y-1/2 bg-[var(--dark-teal)] p-2 rounded-full  transition-all duration-300">
+                    <!-- Icon 1 -->
+                    <button class="menu-item hover:text-[var(--accent-orange)]">
+                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-5 w-5">
+                            <path d="M5 12h14M12 5v14" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Icon 2 -->
+                    <button class="menu-item hover:text-[var(--accent-orange)]">
+                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-5 w-5">
+                            <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Icon 3 -->
+                    <button class="menu-item hover:text-[var(--accent-orange)]">
+                        <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-5 w-5">
+                            <path d="M19 12H5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="flex justify-center items-start min-h-screen pt-5 pb-5">
+        <div class="home-bg w-full max-w-4xl p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="form-cont justify-center flex flex-col gap-4">
+                    
+                    <label class=" flex mb-5 text-4xl">
+                        <img style="margin-right: 15px;" width="150" height="70" src="/visuals/logo-main.jpg">
+                    </label>
+                    <div class="grid grid-cols-3 items-center justify-center gap-4">
+                        <div class="flex justify-start col-span-2">
+                            <select id="issue-select" class="select px-3 w-full py-2 border-none bg-white text-black focus:outline-none">
+                                <option disabled selected>Select issue/call reason</option>
+                                <option value="Issue 1">Issue 1</option>
+                                <option value="Issue 2">Issue 2</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <button id="issue-enter-btn" class="button-sec">Enter</button>
+                        </div>
+                    </div>
+                    
+                    <input id="issue" placeholder="Issue/Request..." class="input">
+                    <input id="example" placeholder="Example..." class="input">
+                    
+                    <label class="mt-5 font-bold">Actions taken</label>
+    
+                    <!-- Grid container for steps -->
+                    <div id="steps-container" class="grid grid-cols-1 gap-4">
+                        <textarea id="step-1" placeholder="1..." class="input textarea-step"></textarea>
+                        <textarea id="step-2" placeholder="2..." class="input textarea-step"></textarea>
+                        <textarea id="step-3" placeholder="3..." class="input textarea-step"></textarea>
+                    </div>
+    
+                    <button onclick="addStep()" class="button">Add row</button>
+                </div>
+                <div class="form-cont flex flex-col gap-4">
+                    <label class="font-bold">Resolution</label>
+                    <textarea id="resolution" placeholder="Outcome..." class="input"></textarea>
+                    <textarea id="expectations" placeholder="Expectations..." class="input"></textarea>
+    
+                    <textarea placeholder="Note will be generated here" id="note-generated" class="note-gened"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Error message toast -->
+    <div id="error-message"></div>
+
+
+   
+    <script src="indexdb.js"></script>
+</body>
+</html>
+
+
+

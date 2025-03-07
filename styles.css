@@ -1,0 +1,240 @@
+:root {
+    --dark-teal: #0c5641;
+    --light-beige: #e9e5dc;
+    --accent-orange: #ff8d6e;
+    --extra-light-beige: #f6f3eb;
+    --primary-color-light: #417E86;
+    --primary-color-200: #8CB2B6;
+    --primary-color-100:rgb(184, 209, 202);
+}
+
+body {
+    background-color: var(--light-beige);
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 80vh;
+    overflow: auto;
+}
+
+#notepad { /* Use ID if your textarea has one */
+    font-family: 'Inconsolata', monospace;
+}
+
+.white-stroke {
+    filter: brightness(0) invert(1);
+}
+
+.nav-container {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+
+.button-navbar {
+    position: relative;
+    background: var(--dark-teal);
+    padding: 8px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.notepad-btn {
+    position: relative; /* Ensure pseudo-element positions relative to this button */
+    align-items: start;
+    justify-content: start;
+}
+
+/* Pseudo-element for "Generate Note" */
+.notepad-btn::after {
+    width: 100px;
+    content: "Generate Note";
+    position: absolute;
+    bottom: -5px; /* Position it below the button */
+    left: 0%;
+    transform: translateX(-80%) scaleX(1); /* Initially hidden and collapsed */
+    background: var(--primary-color-200);
+    color: var(--dark-teal);
+    padding: 8px;
+    border-radius: 50px;
+    font-size: 11px;
+    opacity: 0;
+    transform-origin: right;
+    transition: opacity 0.3s ease-in-out, transform 0.6s ease;
+}
+
+/* Show tooltip on hover */
+.notepad-btn:hover::after {
+    opacity: 1;
+    transform: translateX(-115%) scaleX(1); /* Expands left */
+}
+
+
+.hidden {
+    display: none;
+}
+.active-tab {
+    color: var(--accent-orange);
+}
+
+.home-bg {
+    background: #fff;
+    color: #0c5641;
+    border-radius: 35px;
+    width: 100%;
+    min-height: 80vh; /* Change from height to min-height */
+    overflow: auto;
+}
+
+
+.form-cont{
+    padding: 10px;
+}
+.input {
+    width: 100%; 
+    padding: 7px;
+    font-size: 12px;
+    transition: transform 0.3s ease-out;
+    border-bottom: solid 1px;
+    height: 10vh;
+}
+
+.input:hover{
+    transform: scale(1.01);
+}
+
+.input:focus {
+    background-color:#fff3f4;
+    outline: 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.button {
+    padding: 7px 10px;
+    background: #bd5b00;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50px;
+    width: auto;
+    transition: transform 0.3s ease-out, background 0.2s ease-in-out;
+}
+
+.button:hover {
+    background:rgb(141, 70, 3);
+   /* transform: scale(1.04);*/
+}
+
+.select {
+    padding: 7px;
+    font-size: 12px;
+    transition: transform 0.3s ease-out;
+    border-bottom: solid 1px #0c5641;
+    color: gray;
+}
+
+.select:focus{
+    background-color:#fff3f4;
+    outline: 1px;
+    color: #0c5641;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.button-sec {
+    padding: 4px;
+    border: solid 0.5px #0c5641;
+    border-radius: 50px;
+    width: 150px;
+    transition: transform 0.3s ease-out, background 0.2s ease-in-out;
+}
+
+.button-sec:hover {
+    background: var(--primary-color-100);
+}
+
+.note-gened {
+    background: var(--primary-color-100);
+    padding: 17px;
+    margin-top: 2rem;
+    border-radius: 35px;
+    height: 45vh;
+    font-size: 12px;
+}
+
+/*========Trash can ========*/
+
+/* Container */
+.trash-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Default Lid Position */
+.trash-lid {
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect: Lid Opens */
+.trash-button:hover .trash-lid {
+    transform: scale(1.03) rotate(-25deg) translateY(-2px);
+}
+
+/*========3 dots icon ========*/
+
+/* Three Dots Menu - Hidden Initially */
+#menu {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(-20px);
+    background: none;
+    transition: transform 0.2s ease-in-out, opacity 1.2s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Show Menu (When Active) */
+#menu.show {
+    transform: translateY(-50%) translateX(50px); /* Moves right */
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.2s ease-in-out, opacity 1.2s;
+    z-index: 1;
+}
+
+/* Circle Buttons */
+.menu-item {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color-200);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, background 0.3s;
+}
+
+/* Hover Effect */
+.menu-item:hover {
+    background: var(--accent-orange);
+    transform: scale(1.0);
+}
+.ribbon {
+    background-color: #fff; /* Light gray background */
+}
+.text-area {
+    min-height: 200px;
+    border: 2px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+}
