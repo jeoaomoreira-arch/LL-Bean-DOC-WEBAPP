@@ -24,8 +24,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
-    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -57,7 +55,7 @@
             
 
             <button id="generate-btn" class="button text-[var(--light-beige)]">Generate WN</button>
-            <a href="#" class="button text-[var(--light-beige)]">Short Keys</a>
+            <button id="s-button" class="button text-[var(--light-beige)]">Short Keys</button>
             <button onclick="addStep()" class="text-[var(--light-beige)] button">Add row</button>
             <button onclick="clearData()" class="trash-button text-[var(--light-beige)] bg-[#bd5b00] mx-2 transition-all duration-200 ease-in-out rounded-full p-2" data-tab="tab3">
                 <svg class="w-6 h-6 trash-icon" stroke="currentColor" viewBox="0 0 24 24" fill="none">
@@ -69,6 +67,17 @@
                     <path d="M10 11v6M14 11v6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
+            <div>
+                <button id="signIn" class="button">Sign In</button>
+            </div>
+            
+            <script type="module">
+                import { userManager } from "./main.js";
+            
+                document.getElementById("signIn").addEventListener("click", async () => {
+                    await userManager.signinRedirect();
+                });
+            </script>
             
             
         </div> 
@@ -115,15 +124,13 @@
     
         </div>
     </section>
-    
-    
-    
 
-
+    
     <script src="scripts.js"></script>
     <script src="indexdb.js"></script>
     <script src="searchbar.js"></script>
     <script src="textarea-behavior.js"></script>
     <script src="ribbon.js"></script>
+    
 </body>
 </html>
