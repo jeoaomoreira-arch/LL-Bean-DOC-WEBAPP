@@ -88,6 +88,14 @@ function addStep(content = "") {
     container.appendChild(newTextarea);
 }
 
+
+// Listen for Ctrl + Shift key press
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.shiftKey) { // Using Shift instead of Fn
+        addStep();
+    }
+});
+
 // Attach event listeners for saving on input
 document.getElementById("notepad").addEventListener("input", saveData);
 document.getElementById("add-step-button").addEventListener("click", () => addStep(""));

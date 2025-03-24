@@ -1,6 +1,5 @@
 // Function to generate and copy formatted note
-document.getElementById("generate-btn").addEventListener("click", function () {
-
+function generateAndCopyNote() {
     // Collect step textareas dynamically
     const stepElements = document.querySelectorAll("#steps-container .textarea-step");
     let actions = [];
@@ -29,6 +28,13 @@ document.getElementById("generate-btn").addEventListener("click", function () {
     setTimeout(() => {
         generateBtn.classList.remove("animate-click");
     }, 300);
+}
+
+// Listen for Ctrl + Alt key press
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.altKey) {
+        generateAndCopyNote();
+    }
 });
 
 // Function to show a generated message

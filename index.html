@@ -59,7 +59,7 @@
             
 
             <button id="generate-btn" class="button text-[var(--light-beige)]">Generate WN</button>
-            <button id="s-button" class="button text-[var(--light-beige)]">Short Keys</button>
+            <!--<button id="s-button" class="button text-[var(--light-beige)]">Short Keys</button>-->   
             <button onclick="addStep()" class="text-[var(--light-beige)] button">Add row</button>
             <button onclick="clearData()" class="trash-button text-[var(--light-beige)] bg-[#bd5b00] mx-2 transition-all duration-200 ease-in-out rounded-full p-2" data-tab="tab3">
                 <svg class="w-6 h-6 trash-icon" stroke="currentColor" viewBox="0 0 24 24" fill="none">
@@ -84,9 +84,10 @@
             
     
             <!-- Notepad (Stacks below steps on small screens, side by side on larger screens) -->
-            <textarea id="notepad" placeholder="Notepad... (drag bottom right corner to extend)" 
-                class="bg-[#8CB2B6] placeholder-gray-500 text-[14px] col-span-1 md:col-span-2 row-span-3 rounded-xl p-3 min-h-[300px] resize-y">
+            <textarea id="notepad" placeholder="Notepad... (drag bottom right corner to extend) | Shortcuts: Ctrl+Alt to generate, Ctrl+Shift to add step" 
+            class="bg-[#8CB2B6] placeholder-gray-500 text-[14px] col-span-1 md:col-span-2 row-span-3 rounded-xl p-3 min-h-[300px] resize-y">
             </textarea>
+        
             
             <!-- Steps Container (Full Width on Small Screens, 2 Columns on Larger Screens) -->
             <div class="relative flex flex-col col-span-1 row-span-5 p-5 overflow-auto bg-white md:col-span-2 rounded-xl">
