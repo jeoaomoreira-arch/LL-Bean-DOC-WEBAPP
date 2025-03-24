@@ -16,7 +16,7 @@ body {
     overflow: auto;
 }
 
-#notepad { /* Use ID if your textarea has one */
+#notepad { 
     font-family: 'Inconsolata', monospace;
 }
 
