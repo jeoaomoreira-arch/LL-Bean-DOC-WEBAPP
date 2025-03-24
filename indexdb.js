@@ -79,7 +79,7 @@ function addStep(content = "") {
     const newTextarea = document.createElement("textarea");
     newTextarea.id = `step-${newStepNumber}`;
     newTextarea.placeholder = `${newStepNumber}...`;
-    newTextarea.className = "input textarea-step min-h-[40px] resize-y";
+    newTextarea.className = "resize-y input textarea-step";
     newTextarea.value = content; // Set value from saved data
 
     // Attach event listener for auto-saving

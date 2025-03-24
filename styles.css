@@ -238,3 +238,16 @@ body {
     font-size: 16px;
     resize: none;
 }
+
+.conf-msg {
+    background: rgba(184, 259, 202, 0.9);
+    color: #0c5641;
+    font-weight: bold;
+    border-radius: 30px;
+    backdrop-filter: blur(1px);
+
+}
+
+.textarea-step {
+    height: 50px;
+}
